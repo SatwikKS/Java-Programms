@@ -1,0 +1,7 @@
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+LocalDateTime dateTime = LocalDateTime.now(ZoneId.of("UTC+8"));
+DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("dd-MMM-YY hh:mm:ss a");
+String formattedDate = dateTime.format(dateformat);
