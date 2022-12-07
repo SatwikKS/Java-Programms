@@ -1,0 +1,26 @@
+Transfer File to Another Server using FTP client:
+-----------------------------------
+
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
+import org.apache.commons.net.ftp.FTP;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.File;
+
+String result = null
+FTPClient ftp = new FTPClient();
+ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
+int reply;
+ftp.connect(host, port);
+reply = ftp.getReplyCode();
+if (!FTPReply.isPositiveCompletion(reply)) {
+ftp.disconnect();
+LOGGER.info("Disconnection Successfully");
+}
+ftp.login(username, password);
+ftp.setFileType(FTP.BINARY_FILE_TYPE);
+ftp.enterLocalPassiveMode();
+InputStream input = new FileInputStream(new File(localFileName));
+ftp.storeFile(hostDir + fileName, input);
+return result = SUCCESSFULLY UPLODED;
