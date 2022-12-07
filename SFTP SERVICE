@@ -1,0 +1,43 @@
+TRANSFER FILE THROUGH SFTP CONNECTION:
+----------------------------------------
+
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
+
+JSch jsch = new JSch();
+ChannelSftp sftpChannel = null;
+Session session = null;
+String finalDest = destination + sdf.format(date) + WaalosConstants.DATE_DELIMETER_SLASH;
+
+try {
+
+session = jsch.getSession(userName, host, 22);
+session.setConfig("StrictHostKeyChecking", "no");
+session.setPassword(password);
+session.connect();
+LOGGER.info("SFTP Session Connection Stauts - Sucess");
+Channel channel = session.openChannel("sftp");
+ LOGGER.info("SFTP Source Path : " + source);
+channel.connect();
+LOGGER.info("SFTP Channel Connection Stauts - Sucess");
+sftpChannel = (ChannelSftp) channel;
+sftpChannel.mkdir(destination + sdf.format(date));
+sftpChannel.put(source, finalDest);
+ LOGGER.info("File Uploaded Stauts through SFTP - Success");
+result = WaalosConstants.SUCCESS;
+ } catch (JSchException | SftpException ex) {
+result = WaalosConstants.FAILURE;
+LOGGER.error("Exception in SFTP File Upload ", ex);
+	} finally {
+ if (sftpChannel != null) {
+sftpChannel.exit();
+}
+if (session != null) {
+session.disconnect();
+}
+	}
+return result;
