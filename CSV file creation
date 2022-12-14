@@ -1,0 +1,32 @@
+Create CSV file:
+-----------------------
+
+get the csv file header using DB query or manually with a String using | separator.
+
+
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
+import java.io.IOException
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+
+StringBuilder stringBuilder = new StringBuilder(360);
+final char pipeSeparator ='|';
+
+try(BufferedWriter writer = new FileWriter(filepath)){
+writer.append(csvheader).append(System.lineSeparator());
+  for(customdatatype cdt: customdata){
+   stringBuilder.append(cdt.getkey).append(pipeSeparator)....append(cdt.getkey).append(System.lineSeparator());
+   writer.write(sb.tostring);
+   stringBuilder.delete(0,stringBuilder.length());
+  }
+
+}finally{
+stringBuilder = null;
+}
+
+
+
