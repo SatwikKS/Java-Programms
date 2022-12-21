@@ -53,8 +53,84 @@ read data from source file:
   2) get the size of the data from inputStream and prepare byte[] with data size :  int size = fis.available(); byte[] b = new byte[size];
   3) read the data from FileInputStream to byteArray :                               fis.read(b);
   4)convert the data from byte[] to String :                                         String data = new String(b); system.out.print(data);
+  5) close the FileInputStream(); 
     
+Write a Java program to display particular file content on command 
+prompt by taking filename as command line input? 
 
+String fileName = args[0];
+FileInputStream fis = new FileInputStream(fileName);
+int size = fis.available();
+byte[] b = new bytes[size];
+fis.read(b);
+
+string data  = new string(b);
+System.out.println(data);
+
+fis.close();
+
+
+Write a Java program to count no of words available in a particular 
+text file and how many times the word "Durga" is repeated? 
+
+FileInputStream fis = new FileInputStream("filename.txt");
+int size = fis.available();
+byte[] b = new byte[size];
+fis.read(b);
+String data = new String(b);
+
+StringTokenizer st = new StringTokenizer(data);
+st.countTokens()  => will provide the number of words in the file;
+int count =0;
+while(st.hasMoreTokens()){
+String token = st.nextToken();
+if(token.equals("durga")){
+count ++;
+}
+
+System.out.println("count is " +count );
+}
+
+
+Write a Java program to copy an image from a source file to 
+a particular target file?
+
+FileInputStream fis = new FileInputStream("abc.txt");
+int size = fis.available();
+byte[] b = new byte[size];
+fis.read(b);
+
+FileOutputStream fos = new FileOutputStream("target.txt");
+//declare data and convert data into byte[] using getBytes() ;
+
+fos.write(b);
+fis.close();
+fos.close();
+
+
+CharacterOriented Stream workflow:
+----------------------------------
+write data to a targetfile:
+
+1) create *writerObject :                                                         FileWriter fw = new FileWriter("filename.txt");
+2) Declare the data which we want to transfer and convert that data to char[];    string data= "Hello";  Char[] c = data.toCharArray();
+3) write char[] into FileWriter :                                                 fw.write(c);
+4) close the fileWriter :                                                         fw.close();
+
+Read data from a source file:
+1) create *reader object         :                                                               FileReader fr = new FileReader("source.txt");                                                                  
+2) read the data using read() method ;                                                           int val = fr.read();
+3) the data returned will be ASCII, convert it into Char explicitly and then append to String ;     while(val != -1){ Data  = Data +(char)val;}
+4) close the reader object :                                                                            fr.close()
+
+
+FileReader fr = new FileReader("source.txt");
+int val = fr.read();
+String Data = null;
+while(val != -1){
+Data  = Data +(char)val;
+}
+fr.close()
  
  
 
