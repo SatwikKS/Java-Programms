@@ -131,6 +131,17 @@ while(val != -1){
 Data  = Data +(char)val;
 }
 fr.close()
+
+
+-------------------------- ---------------------------- ----------------------------- -----------------------
+
+Approaches to provide Dynamic input :
+
+1)BufferedReader:  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));   readLine() && read() methods;
+2)Scanner : Scanner sc = new Scanner(system.in); sc.next(); sc.nextint(), sc.nextLine(), sc.nextbyte();
+3)Console : Console C =System.console(); c.readLine() returns String; c.readPassword() returns char[], convert it to new String(data);
+
+
  
  
 
