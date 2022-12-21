@@ -1,0 +1,43 @@
+
+If we prepare any java Application on the basis of client-server architecture , then that application is called Distributed Application.
+To prepare Distributed Application we have 
+1)  Socket Programming
+2)  RMI
+
+
+If we want to prepare distributed applications by using Socket Programming then we 
+have to use Sockets between machines to transfer data from one machine to another machine.
+* Socket is a Channel or medium to transfer data from one machine to another machine.
+* In Socket programming we have to establish Sockets on the basis of System IP Address and Port Numbers.
+
+Steps for Socket Programming at client end:
+--------------------------------------------
+
+1) create a socket at Client Machine :  Socket so = new Socket(IP, port);
+2) get OutputStream from Socket : OutputStream os = so.getOutsputStream()
+3) Create PrintStream with outputStream :  PrintStream ps = new PrintStream(os);
+4) Send data to printStream : String data ="hello"; ps.println(data);
+
+* with the above steps data will be sent to server;
+
+  now receive data from Server:
+  
+ 5) InputStream is = so.getInputStream();
+ 6) read inputstream with bufferedreader : BufferedReader br = new BufferedReader(new inputStreamReader(is));
+ 7) readdata from bufferedReader; String data  = br.readline();
+ 
+ 
+ Steps to prepare Server Application:
+ ------------------------------------
+ 
+ 1) get inputStream from socket:  InputStream is = s.getInputStream();
+ 2) create BufferedReader with InputStream : BufferedReader br = new BufferedReader(new InputStreamReader(is));
+ 3)readdata from BufferedReader : String data = br.readLine();
+ 4)get outputstream from socket : OutputStream os = s.getOutputStream();
+ 5) create PrintStream with outputStream(); PrintStream ps = new PrintStream(os);
+ 6)send data to printStream() : ps.println("hello");
+ 
+ 
+ 
+
+
