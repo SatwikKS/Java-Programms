@@ -1,0 +1,60 @@
+Java File Handling:
+---------------------
+
+In any programming language, in any application, providing input to the application and getting output from the Application is Essential.
+In Java Applications, we use Streams for this input and output operations.
+we have 2 types of streams :
+1) ByteOrientedStream  : 1 byte of data is transferred
+2) CharacterOrientedStream : 2 bytes of data is transferred
+
+
+There are two types of ByteOrientedStreams:
+1) InputStream
+2) OutputStream
+
+ByteInputStream  Types :                            ByteOutputStream Types:
+--------------                                    --------------------------
+
+  ByteArrayInputStream                              ByteArrayOutputStream
+  FilterInputStream                                 FilterOutputStream
+  DataInputStream                                   DataOutputStream
+  ObjectInput Stream                                FileOutputStream
+  FileInputStream                                   PrintStream
+  StringBufferInputStream                           BufferedOutputStream
+  BufferedInputStream
+  
+  
+There are two types of CharacterOrientedStreams:
+ 1) Reader
+ 2) writer
+ 
+ 
+ Reader                                               writer
+ ------------------------------------------------------------------
+ 
+ CharArrayReader                          CharArrayWriter
+ FilterReader                             FilterWriter
+ FileReader                               FileWriter
+ BufferedReader                           BufferedWriter
+ InputStreamReader                        printWriter
+ 
+ 
+ 
+ ByteOriented Stream steps:
+ --------------------------
+ write data to target files:
+    1) create  *outputStream between javaProgram and target file   :  FileOutputStream fos = new FileOutputStream(new File("Target.txt"));
+    2) declare the data and convert it into byteArray[] :   String data ="Hello";  bytes[] b = data.getBytes();
+    3) write byteArray data into FileOutputStream :                               fos.write(b);
+    4) close FileOutputStream:                                                    fos.close();
+    
+read data from source file:
+  1) create *inputStream between source file and java programme:                    FileInputStream fis = new FileInputStream( ("abc.txt")) -> throws filenotfound exception.
+  2) get the size of the data from inputStream and prepare byte[] with data size :  int size = fis.available(); byte[] b = new byte[size];
+  3) read the data from FileInputStream to byteArray :                               fis.read(b);
+  4)convert the data from byte[] to String :                                         String data = new String(b); system.out.print(data);
+    
+
+ 
+ 
+
