@@ -1,0 +1,33 @@
+Steps to be followed
+
+1) get the file path 
+2) create fileinputStream
+3) create XSSFWorkBook using constructor XSSFWorkbook(InputStream Is);
+4) get the sheet from the workbook using getSheet(String sheetName)/ getSheetAt(int sheetNumber);
+5) 2 methods are there to read the data 
+6) FOrLoop method is explained below
+    1) get the total number of rows available : sheet.getLastRowNum()
+    2)get the columns using row : int cols =sheet.getRow(1).getlastCellNum();
+    3) use foreach loop to iterate over each row  int r=0; r<=rows; r++
+    4) get the XSSFROW row = sheet.getRow(for loop row num=0 variable)
+    5) create innerloop to iterate over the columns
+    6) int c=0; c<cols;c++
+    7) get the cell object now: XSSFCell  cell =row.getCell(column iterator from for loop c:0)
+    8) once you have cell, get the cell type using cell.getCellTYpe();
+    9)create switch statement as switch(cell.getcellType);
+    10) create cases as: STRING: COLLECT cell.getStringCellValue, cell.getNumericCellValue, cell.getBooleanCellValue.
+    11) after switch loop create data separator | 
+    12) create new line using sysout()
+ 7) Iterator approach:
+  1)  create Iterator once we have sheet :  Iterator rows = sheet.iterator()
+  2) check nextrow is present: while(rows.hasNext())
+  3) get the row object XSSFROW row = (XSSFRow) rows.next()
+  4) get the celliterator
+  5) Iterator celliterator = row.cellIteator()
+  6) check next cell is there / not while(celliterator.hasnext())
+  7) get the cell using XSSFCell cell =(XSSFCell) celliterator.next();
+  8) check the cell type using switch statement and collect the cell values of different type
+  9)create pipe separator
+  10) create sysout();
+  
+  
