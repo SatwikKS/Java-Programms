@@ -31,3 +31,33 @@ Steps to be followed
   10) create sysout();
   
   
+  String filePath = "";
+  FileInputStream fis = new FileInputStream(filePath);
+  XSSFWorkBook workbook = new XSSFWorkBook(fis);
+  XSSFSheet sheet = workbook.getSheetAt(0);
+  
+  Iterator iteratorOfRows = sheet.iterator();
+  while(iteratorOfRows.hasNext()){
+  XSSFRow row =(XSSFRow) iteratorOfRows.Next();
+   
+  Iterator cellIterator = row.cellIterator();
+  while(cellIterator.hasNext()){
+  XSSFCell cell = (XSSFRow)cellIterator.next();
+   
+   switch(cell.getCellType){
+    case Numeric: system.out.printLn(cell.getNumericCellValue) ; break;
+    case Boolean: system.out.printLn(cell.getBooleanCellValue) ; break;
+    case String: system.out.printLn(cell.getStringCellValue) ; break;
+   }
+   System.out.print(" |");
+   }
+  
+  System.out.println();
+  }
+  
+  
+  
+  
+  
+  
+  
